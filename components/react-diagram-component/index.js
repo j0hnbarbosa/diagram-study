@@ -1,7 +1,4 @@
-import React from 'react'
-
 import createEngine, {
-  DefaultLinkModel,
   DefaultNodeModel,
   DiagramModel
 } from '@projectstorm/react-diagrams';
@@ -10,7 +7,7 @@ import {
   CanvasWidget
 } from '@projectstorm/react-canvas-core';
 
-import styles from './styles.module.css'
+import style from '../../styles/ContainerDiagram.module.css'
 
 function ReactDiagramComponent() {
   // create an instance of the engine with all the defaults
@@ -52,7 +49,7 @@ function ReactDiagramComponent() {
 
   return (
     <div
-      className={styles.container}
+      className={style.container}
     >
       <CanvasWidget engine={engine} />
     </div>

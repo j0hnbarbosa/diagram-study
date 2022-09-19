@@ -7,10 +7,18 @@ body {
 }
 
 a {
-  color: inherit;
+  color: rgb(81, 81, 255);
   text-decoration: none;
+  transition: 0.3s;
 }
 
+a:hover {
+  color: blueviolet;
+}
+
+li {
+  list-style: none;
+}
 * {
   box-sizing: border-box;
 }

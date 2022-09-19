@@ -6,9 +6,14 @@ const ReactDiagramComponent = dynamic(
   { ssr: false }
 )
 
+const ReactDiagramSimpleLinkComponent = dynamic(
+  () => import('../../components/react-diagram-component/simple-link'),
+  { ssr: false }
+)
+
 function ReactDiagramPage() {
   return (
-    <ReactDiagramComponent />
+    <ReactDiagramSimpleLinkComponent />
   )
 }
 

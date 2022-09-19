@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 6px;
+  padding: 20px;
+  min-width: 420px;
+  margin-bottom: 18px;
+}
+
+.textLink {
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.containerHeader {
+  display: flex;
+  justify-content: center;
+}
+
+.header {
+  font-weight: 500;
+  font-size: 26px;
+}
+
+.centerText {
+  text-align: center;
+}
