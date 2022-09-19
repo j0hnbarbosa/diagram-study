@@ -112,7 +112,7 @@ function ReactFlowComponent() {
 
   const onConnect = useCallback((connection) => {
     setEdges((eds) => addEdge(connection, eds));
-  }, []);
+  }, [setEdges]);
 
   return (
     <div className={style.container}>

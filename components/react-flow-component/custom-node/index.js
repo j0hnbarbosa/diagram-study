@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 // import * as R from "ramda";
 import { Handle } from "react-flow-renderer";
-import Node, { contentStyle as style } from "./Node";
+import Node, { contentStyle as style } from "./node";
 
 const isValidConnection = (connection) => {
   return R.last(R.split("__", connection.target)) === "data";
