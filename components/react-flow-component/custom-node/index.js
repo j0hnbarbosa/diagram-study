@@ -4,11 +4,12 @@ import Node, { contentStyle as style } from "./node";
 import stylenode from './NodeStyles.module.css';
 
 const CustomNode = ({ data, selected }) => {
-  const { output = {} } = data;
-
   if (!data) {
     return <></>
   }
+
+  const { output = {} } = data;
+
 
   return (
     <>
