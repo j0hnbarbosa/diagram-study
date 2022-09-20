@@ -1,47 +1,45 @@
 import React, { memo } from "react";
-// import * as R from "ramda";
 import { Handle } from "react-flow-renderer";
 import Node, { contentStyle as style } from "./node";
-
-const isValidConnection = (connection) => {
-  return R.last(R.split("__", connection.target)) === "data";
-};
+import stylenode from './NodeStyles.module.css';
 
 const CustomNode = ({ data, selected }) => {
-  return (
+  const { output = {} } = data;
 
-    data &&
-    data.outputs &&
-    data.outputs.map((element, indice) => (
+  if (!data) {
+    return <></>
+  }
+
+  return (
+    <>
       <Node
-        key={indice}
+        key={data.id}
         label={data.label}
         selected={selected}
         color={"LemonChiffon"}
         content={
           <>
-            <span style={style.io} key={indice}>
-              {console.log(element)}
-              {element.label}
-              {!element?.hideHandleLeft && <Handle
+            <span style={style.io}>
+              {console.log(output)}
+              <span>{data.label}</span>
+              {!output?.hideHandleLeft && <Handle
                 type="target"
                 position="left"
-                id={element.idLeft}
+                id={output.idLeft}
                 style={{ ...style.handle, ...style.left }}
-              // isValidConnection={isValidConnection}
               />}
-              {!element?.hideHandleRight && <Handle
+              {!output?.hideHandleRight && <Handle
                 type="source"
                 position="right"
-                id={element.idRight}
+                id={output.idRight}
                 style={{ ...style.handle, ...style.right }}
-              // isValidConnection={isValidConnection}
               />}
             </span>
           </>
         }
       />
-    ))
+      <div className={stylenode.labelPosition}>{output.label}</div>
+    </>
   );
 };
 

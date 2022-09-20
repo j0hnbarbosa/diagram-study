@@ -1,0 +1,12 @@
+.container {
+  position: relative;
+}
+
+.labelPosition {
+  position: absolute;
+  text-align: center;
+  left: -32px;
+  color: #456BD9;
+  font-size: 12px;
+  width: 130px;
+}

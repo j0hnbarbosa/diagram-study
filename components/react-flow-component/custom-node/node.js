@@ -1,4 +1,5 @@
 import React, { memo } from "react";
+import stylenode from './NodeStyles.module.css';
 
 export const contentStyle = {
   contentHeader: {
@@ -36,7 +37,6 @@ export const contentStyle = {
 const style = {
   body: {
     display: "flex",
-    flexDirection: "column",
     backgroundColor: "#fff",
     transition: "all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
     boxShadow: "0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)",
@@ -63,7 +63,6 @@ const style = {
 };
 
 const Node = ({
-  label,
   selected,
   color,
   content
@@ -71,10 +70,8 @@ const Node = ({
   let customTitle = { ...style.title };
   if (color) customTitle.backgroundColor = color;
 
-  // Collapse contentWrapper on icon click
   return (
     <div style={{ ...style.body, ...(selected ? style.selected : []) }}>
-      {/* <div style={customTitle}>{label}</div> */}
       <div style={style.contentWrapper}>
         {content}
       </div>

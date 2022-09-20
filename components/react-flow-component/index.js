@@ -21,11 +21,9 @@ const initialNodes = [
     id: '1',
     type: 'customNode',
     data: {
-      label: 'Node 1',
-      outputs: [
-        { hideHandleLeft: true, idLeft: 'left-node1-1', idRight: 'right-node1-1', label: "Node 1 A", type: "data" },
-        // { firstNode: true, idLeft: 'left-node1-2', idRight: 'right-node1-2', label: "Node 1 B", type: "value" }
-      ]
+      label: 'Node 1 A',
+      output:
+        { hideHandleLeft: true, idLeft: 'left-node1-1', idRight: 'right-node1-1', type: "data", label: "Origem (DAX)" },
     },
     position: { x: 50, y: 100 },
     className: 'light',
@@ -34,11 +32,10 @@ const initialNodes = [
     id: '2',
     type: 'customNode',
     data: {
-      label: 'Node 2',
-      outputs: [
-        // { idLeft: 'left-node2-1', idRight: 'right-node2-1', label: "Node 2 A", type: "data" },
-        { idLeft: 'left-node2-2', idRight: 'right-node2-2', label: "Node 2 B", type: "value" }
-      ]
+      label: 'Node 2 A',
+      output:
+        { idLeft: 'left-node2-2', idRight: 'right-node2-2', label: "Processo", type: "value" }
+
     },
     position: { x: 250, y: 100 }, className: 'light'
   },
@@ -46,23 +43,19 @@ const initialNodes = [
     id: '3',
     type: 'customNode',
     data: {
-      label: 'Node 3',
-      outputs: [
-        { hideHandleRight: true, idLeft: 'left-node3-1', idRight: 'right-node3-1', label: "Node 3 A", type: "data" },
-        // { hideHandleRight: true, idLeft: 'left-node3-2', idRight: 'right-node3-2', label: "Node 3 B", type: "value" },
-        // { hideHandleRight: true, idLeft: 'left-node3-3', idRight: 'right-node3-3', label: "Node 3 C", type: "value" },
-      ]
+      label: 'Node 3 A',
+      output:
+        { hideHandleRight: true, idLeft: 'left-node3-1', idRight: 'right-node3-1', label: "Entidade Atual", type: "data" },
     },
-    position: { x: 450, y: 25 }, className: 'light'
+    position: { x: 450, y: 0 }, className: 'light'
   },
   {
     id: '3-1',
     type: 'customNode',
     data: {
-      label: 'Node 3-1',
-      outputs: [
-        { idLeft: 'left-node3-2', idRight: 'right-node3-2', label: "Node 3 B", type: "value" },
-      ]
+      label: 'Node 3 B "',
+      output:
+        { idLeft: 'left-node3-2', idRight: 'right-node3-2', label: "Processo", type: "value" },
     },
     position: { x: 450, y: 100 }, className: 'light'
   },
@@ -70,21 +63,19 @@ const initialNodes = [
     id: '3-2',
     type: 'customNode',
     data: {
-      label: 'Node 3-2',
-      outputs: [
-        { hideHandleRight: true, idLeft: 'left-node3-3', idRight: 'right-node3-3', label: "Node 3 C", type: "value" },
-      ]
+      label: 'Node 3 C',
+      output:
+        { hideHandleRight: true, idLeft: 'left-node3-3', idRight: 'right-node3-3', label: "Objetivo (DAX)", type: "value" },
     },
-    position: { x: 450, y: 175 }, className: 'light'
+    position: { x: 450, y: 200 }, className: 'light'
   },
   {
     id: '4',
     type: 'customNode',
     data: {
-      label: 'Node 4',
-      outputs: [
-        { hideHandleRight: true, idLeft: 'left-node4-1', idRight: 'right-node4-1', label: "Node 4 A", type: "value" },
-      ]
+      label: 'Node 4 A',
+      output:
+        { hideHandleRight: true, idLeft: 'left-node4-1', idRight: 'right-node4-1', label: "Objetivo (DAX)", type: "value" },
     },
     position: { x: 650, y: 25 }, className: 'light'
   },
