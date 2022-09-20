@@ -9,40 +9,39 @@ const isValidConnection = (connection) => {
 
 const CustomNode = ({ data, selected }) => {
   return (
-    <Node
-      label={data.label}
-      selected={selected}
-      color={"LemonChiffon"}
-      content={
-        <>
-          <div style={style.io}>
-            {"Source"}
-            <Handle
-              type="source"
-              position="right"
-              id="o__data"
-              style={{ ...style.handle, ...style.right }}
-              isValidConnection={isValidConnection}
-            />
-          </div>
 
-          {data &&
-            data.outputs &&
-            data.outputs.map((element, indice) => (
-              <div style={style.io} key={indice}>
-                {element.label}
-                <Handle
-                  type="source"
-                  position="right"
-                  id="o__data"
-                  style={{ ...style.handle, ...style.right }}
-                  isValidConnection={isValidConnection}
-                />
-              </div>
-            ))}
-        </>
-      }
-    />
+    data &&
+    data.outputs &&
+    data.outputs.map((element, indice) => (
+      <Node
+        key={indice}
+        label={data.label}
+        selected={selected}
+        color={"LemonChiffon"}
+        content={
+          <>
+            <span style={style.io} key={indice}>
+              {console.log(element)}
+              {element.label}
+              {!element?.hideHandleLeft && <Handle
+                type="target"
+                position="left"
+                id={element.idLeft}
+                style={{ ...style.handle, ...style.left }}
+              // isValidConnection={isValidConnection}
+              />}
+              {!element?.hideHandleRight && <Handle
+                type="source"
+                position="right"
+                id={element.idRight}
+                style={{ ...style.handle, ...style.right }}
+              // isValidConnection={isValidConnection}
+              />}
+            </span>
+          </>
+        }
+      />
+    ))
   );
 };
 

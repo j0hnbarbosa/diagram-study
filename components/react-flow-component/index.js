@@ -21,90 +21,85 @@ const initialNodes = [
     id: '1',
     type: 'customNode',
     data: {
-      label: 'Node 0',
+      label: 'Node 1',
       outputs: [
-        { label: "Model", type: "data" },
-        { label: "Error", type: "value" }
+        { hideHandleLeft: true, idLeft: 'left-node1-1', idRight: 'right-node1-1', label: "Node 1 A", type: "data" },
+        // { firstNode: true, idLeft: 'left-node1-2', idRight: 'right-node1-2', label: "Node 1 B", type: "value" }
       ]
     },
-    position: { x: 250, y: 5 },
+    position: { x: 50, y: 100 },
     className: 'light',
   },
   {
     id: '2',
-    data: { label: 'Group A' },
-    position: { x: 100, y: 100 },
-    className: 'light',
-    style: { backgroundColor: 'rgba(255, 0, 0, 0.2)', width: 200, height: 200 },
-  },
-  {
-    id: '2a',
-    data: { label: 'Node A.1' },
-    position: { x: 10, y: 50 },
-    parentNode: '2',
+    type: 'customNode',
+    data: {
+      label: 'Node 2',
+      outputs: [
+        // { idLeft: 'left-node2-1', idRight: 'right-node2-1', label: "Node 2 A", type: "data" },
+        { idLeft: 'left-node2-2', idRight: 'right-node2-2', label: "Node 2 B", type: "value" }
+      ]
+    },
+    position: { x: 250, y: 100 }, className: 'light'
   },
   {
     id: '3',
     type: 'customNode',
     data: {
-      label: 'Node 1',
+      label: 'Node 3',
       outputs: [
-        { label: "Model", type: "data" },
-        { label: "Error", type: "value" }
+        { hideHandleRight: true, idLeft: 'left-node3-1', idRight: 'right-node3-1', label: "Node 3 A", type: "data" },
+        // { hideHandleRight: true, idLeft: 'left-node3-2', idRight: 'right-node3-2', label: "Node 3 B", type: "value" },
+        // { hideHandleRight: true, idLeft: 'left-node3-3', idRight: 'right-node3-3', label: "Node 3 C", type: "value" },
       ]
     },
-    position: { x: 320, y: 100 }, className: 'light'
+    position: { x: 450, y: 25 }, className: 'light'
+  },
+  {
+    id: '3-1',
+    type: 'customNode',
+    data: {
+      label: 'Node 3-1',
+      outputs: [
+        { idLeft: 'left-node3-2', idRight: 'right-node3-2', label: "Node 3 B", type: "value" },
+      ]
+    },
+    position: { x: 450, y: 100 }, className: 'light'
+  },
+  {
+    id: '3-2',
+    type: 'customNode',
+    data: {
+      label: 'Node 3-2',
+      outputs: [
+        { hideHandleRight: true, idLeft: 'left-node3-3', idRight: 'right-node3-3', label: "Node 3 C", type: "value" },
+      ]
+    },
+    position: { x: 450, y: 175 }, className: 'light'
   },
   {
     id: '4',
-    data: { label: 'Group B' },
-    position: { x: 320, y: 200 },
-    className: 'light',
-    style: { backgroundColor: 'rgba(255, 0, 0, 0.2)', width: 300, height: 300 },
-  },
-  {
-    id: '4a',
-    data: { label: 'Node B.1' },
-    position: { x: 15, y: 65 },
-    className: 'light',
-    parentNode: '4',
-    extent: 'parent',
-  },
-  {
-    id: '4b',
-    data: { label: 'Group B.A' },
-    position: { x: 15, y: 120 },
-    className: 'light',
-    style: { backgroundColor: 'rgba(255, 0, 255, 0.2)', height: 150, width: 270 },
-    parentNode: '4',
-  },
-  {
-    id: '4b1',
-    data: { label: 'Node B.A.1' },
-    position: { x: 20, y: 40 },
-    className: 'light',
-    parentNode: '4b',
-  },
-  {
-    id: '4b2',
-    data: { label: 'Node B.A.2' },
-    position: { x: 100, y: 100 },
-    className: 'light',
-    parentNode: '4b',
+    type: 'customNode',
+    data: {
+      label: 'Node 4',
+      outputs: [
+        { hideHandleRight: true, idLeft: 'left-node4-1', idRight: 'right-node4-1', label: "Node 4 A", type: "value" },
+      ]
+    },
+    position: { x: 650, y: 25 }, className: 'light'
   },
 ];
 
 const initialEdges = [
-  { id: 'e1-2', source: '1', target: '2', animated: true },
-  { id: 'e1-3', source: '1', target: '3' },
-  { id: 'e2a-4a', source: '2a', target: '4a' },
-  { id: 'e3-4', source: '3', target: '4' },
-  { id: 'e3-4b', source: '3', target: '4b' },
-  { id: 'e4a-4b1', source: '4a', target: '4b1' },
-  { id: 'e4a-4b2', source: '4a', target: '4b2' },
-  { id: 'e4b1-4b2', source: '4b1', target: '4b2' },
+  // { id: 'e1-2', source: '1', target: '2', animated: true },
+  // { id: 'e1-22', source: '1', target: '2' },
+  // { id: 'e2-3', source: '2', target: '3' },
+  { id: 'e-1', sourceHandle: 'right-node1-1', targetHandle: 'left-node2-2', source: '1', target: '2', animated: true },
+  { id: 'e-2', sourceHandle: 'right-node2-1', targetHandle: 'left-node3-1', source: '2', target: '3' },
+  { id: 'e-3', sourceHandle: 'right-node2-1', targetHandle: 'left-node3-2', source: '2', target: '3-1' },
+  { id: 'e-4', sourceHandle: 'right-node2-1', targetHandle: 'left-node3-3', source: '2', target: '3-2' },
+  { id: 'e-4', sourceHandle: 'right-node3-2', targetHandle: 'left-node4-1', source: '3-1', target: '4' },
 ];
-
 
 function ReactFlowComponent() {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);

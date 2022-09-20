@@ -2,14 +2,21 @@ import React, { memo } from "react";
 
 export const contentStyle = {
   contentHeader: {
-    padding: "8px 0px",
+    padding: "8px",
     flexGrow: 1,
     backgroundColor: "#eee"
   },
   io: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
     position: "relative",
-    padding: "8px 16px",
-    flexGrow: 1
+    padding: "16px",
+    flexGrow: 1,
+    width: "50px",
+    height: "50px",
+    borderRadius: "15px",
+
   },
   left: { left: "-8px" },
   textLeft: { textAlign: "left" },
@@ -17,10 +24,9 @@ export const contentStyle = {
   textRight: { textAlign: "right" },
   handle: {
     widht: "10px", // Does not work
-    height: "10px",
+    height: "5px",
     margin: "auto",
     background: "#ddd",
-    borderRadius: "15px",
     border: "2px solid #ddd",
     boxShadow:
       "rgba(0, 0, 0, 0.2) 0px 1px 3px 0px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 2px 1px -1px"
@@ -35,7 +41,12 @@ const style = {
     transition: "all 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
     boxShadow: "0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)",
     border: "0px solid #bbb",
-    fontSize: "10pt"
+    fontSize: "10pt",
+    borderRadius: "50%",
+    background: "#456BD9",
+    clipPath: "circle(50%)",
+    color: "#FFF",
+
   },
   selected: {
     boxShadow: "0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)"
@@ -47,7 +58,7 @@ const style = {
     backgroundColor: "#eee"
   },
   contentWrapper: {
-    padding: "8px 0px"
+    padding: "8px",
   }
 };
 
@@ -63,8 +74,10 @@ const Node = ({
   // Collapse contentWrapper on icon click
   return (
     <div style={{ ...style.body, ...(selected ? style.selected : []) }}>
-      <div style={customTitle}>{label}</div>
-      <div style={style.contentWrapper}>{content}</div>
+      {/* <div style={customTitle}>{label}</div> */}
+      <div style={style.contentWrapper}>
+        {content}
+      </div>
     </div>
   );
 };
