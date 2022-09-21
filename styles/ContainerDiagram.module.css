@@ -8,3 +8,11 @@
   width: inherit;
   height: inherit;
 }
+
+.edge-first {
+  z-index: 1 !important;
+}
+
+.edge-first>div>div>div>svg {
+  z-index: 2 !important;
+}

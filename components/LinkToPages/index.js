@@ -4,7 +4,6 @@ function LinkToPages({
   linkpage = "",
   linkDocumentation = "",
   header = "",
-  labelDoc = "",
 }) {
   return (
     <div className={style.container}>
