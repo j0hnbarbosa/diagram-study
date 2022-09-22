@@ -74,7 +74,7 @@ const initialNodes = [
     data: {
       label: 'Node 3 C',
       output:
-        { hideHandleRight: true, idLeft: 'left-node3-3', idRight: 'right-node3-3', label: "Objetivo (DAX)", type: "value" },
+        { hideHandleRight: true, idLeft: 'left-node3-3', idRight: 'right-node3-3', label: "Destino (DAX)", type: "value" },
     },
     position: { x: 450, y: 200 }, className: 'light'
   },
@@ -84,18 +84,18 @@ const initialNodes = [
     data: {
       label: 'Node 4 A',
       output:
-        { hideHandleRight: true, idLeft: 'left-node4-1', idRight: 'right-node4-1', label: "Objetivo (DAX)", type: "value" },
+        { hideHandleRight: true, idLeft: 'left-node4-1', idRight: 'right-node4-1', label: "Destino (DAX)", type: "value" },
     },
     position: { x: 650, y: 0 }, className: 'light'
   },
 ];
 
 const initialEdges = [
-  { id: 'e-1', type: 'buttonEdge', sourceHandle: 'right-node1-1', targetHandle: 'left-node2-2', source: '1', target: '2', animated: true },
-  { id: 'e-2', type: 'buttonEdge', sourceHandle: 'right-node2-1', targetHandle: 'left-node3-1', source: '2', target: '3' },
-  { id: 'e-3', type: 'buttonEdge', sourceHandle: 'right-node2-1', targetHandle: 'left-node3-2', source: '2', target: '3-1' },
-  { id: 'e-4', type: 'buttonEdge', sourceHandle: 'right-node2-1', targetHandle: 'left-node3-3', source: '2', target: '3-2' },
-  { id: 'e-5', type: 'buttonEdge', sourceHandle: 'right-node3-2', targetHandle: 'left-node4-1', source: '3-1', target: '4' },
+  { id: 'e-1', zIndex: 1, type: 'buttonEdge', sourceHandle: 'right-node1-1', targetHandle: 'left-node2-2', source: '1', target: '2', animated: true },
+  { id: 'e-2', zIndex: 1, type: 'buttonEdge', sourceHandle: 'right-node2-1', targetHandle: 'left-node3-1', source: '2', target: '3' },
+  { id: 'e-3', zIndex: 1, type: 'buttonEdge', sourceHandle: 'right-node2-1', targetHandle: 'left-node3-2', source: '2', target: '3-1', animated: true  },
+  { id: 'e-4', zIndex: 1, type: 'buttonEdge', sourceHandle: 'right-node2-1', targetHandle: 'left-node3-3', source: '2', target: '3-2' },
+  { id: 'e-5', zIndex: 1, type: 'buttonEdge', sourceHandle: 'right-node3-2', targetHandle: 'left-node4-1', source: '3-1', target: '4', animated: true  },
 ];
 
 
@@ -123,7 +123,7 @@ function ReactFlowComponent() {
   return (
     <ComponentContext.Provider value={valuesContext}>
 
-      <div className={`${style.container} ${style["edge-first"]}`}>
+      <div className={`${style.container}`}>
         <ReactFlow
           nodes={nodes}
           edges={edges}
@@ -133,6 +133,7 @@ function ReactFlowComponent() {
           onEdgesChange={onEdgesChange}
           onConnect={onConnect}
           fitView
+          preventScrolling
         >
           {/* {currentCoordenates && currentEdge && <Message
             label="Hello"
@@ -140,7 +141,7 @@ function ReactFlowComponent() {
           />} */}
 
           <MiniMap />
-          <Controls />
+          {/* <Controls /> */}
           <Background />
         </ReactFlow>
       </div>

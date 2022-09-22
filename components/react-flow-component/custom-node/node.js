@@ -29,8 +29,8 @@ export const contentStyle = {
     margin: "auto",
     background: "#ddd",
     border: "2px solid #ddd",
-    boxShadow:
-      "rgba(0, 0, 0, 0.2) 0px 1px 3px 0px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 2px 1px -1px"
+    // boxShadow:
+    //   "rgba(0, 0, 0, 0.2) 0px 1px 3px 0px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 2px 1px -1px"
   }
 };
 
@@ -45,7 +45,6 @@ const style = {
     backgroundColor: "#90CDF4",
     clipPath: "circle(50%)",
     color: "#FFF",
-
   },
   selected: {
     boxShadow: "0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)"

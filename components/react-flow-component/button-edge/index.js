@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useContext } from 'react';
+import React, { memo, useCallback, useContext, useMemo } from 'react';
 import { getBezierPath, getEdgeCenter } from 'react-flow-renderer';
 
 import styles from './ButtonEdgeStyles.module.css';
@@ -38,13 +38,14 @@ function ButtonEdge({
     handleCurrentEdgeClicked,
     currentEdge,
     ...rest
-  } = useContext(ComponentContext)
+  } = useContext(ComponentContext);
 
+
+  const edgeSelected = useMemo(() => currentEdge === id ? null : id, [currentEdge, id])
 
 
   const onEdgeClick = useCallback((evt) => {
     evt.stopPropagation();
-    const value = currentEdge === id ? null : id;
 
     const coord = {
       sourceX,
@@ -55,8 +56,12 @@ function ButtonEdge({
       targetPosition,
     };
 
-    handleCurrentEdgeClicked(value, coord)
-  }, [currentEdge, handleCurrentEdgeClicked, id, sourcePosition, sourceX, sourceY, targetPosition, targetX, targetY]);
+    handleCurrentEdgeClicked(edgeSelected, coord);
+  }, [edgeSelected, handleCurrentEdgeClicked, sourcePosition, sourceX, sourceY, targetPosition, targetX, targetY]);
+
+  const handleOnClose = useCallback(() => {
+    handleCurrentEdgeClicked(null, null);
+  }, [handleCurrentEdgeClicked]);
 
   console.log("rest", rest)
   console.log("currentEdge", currentEdge)
@@ -65,7 +70,7 @@ function ButtonEdge({
     <>
       <path
         id={id}
-        style={style}
+        style={edgeSelected ? { zIndex: "999" } : style}
         className="react-flow__edge-path"
         d={edgePath}
         markerEnd={markerEnd}
@@ -92,15 +97,15 @@ function ButtonEdge({
       {console.log(currentEdge === id)}
       {currentEdge === id && (
         < foreignObject
-          width="194"
+          width="160"
           height="150"
-          x={edgeCenterX}
-          y={-36}
+          x={edgeCenterX - foreignObjectSize / 2}
+          y={edgeCenterY - foreignObjectSize / 2}
           // className={styles["edgebutton-foreignobject"]}
           requiredExtensions="http://www.w3.org/1999/xhtml"
-          style={{ zIndex: '99999' }}
+          style={{ zIndex: '999' }}
         >
-          <CardMessage />
+          <CardMessage onClose={handleOnClose} />
 
         </foreignObject>)}
 
