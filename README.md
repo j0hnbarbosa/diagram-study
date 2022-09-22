@@ -7,8 +7,10 @@ You can see the page [HERE](https://diagram-study.vercel.app/)
 First, run the development server:
 
 ```bash
+npm install
 npm run dev
 # or
+yarn install
 yarn dev
 ```
 
