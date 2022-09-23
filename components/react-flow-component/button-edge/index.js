@@ -18,6 +18,8 @@ function ButtonEdge({
   targetPosition,
   style = {},
   markerEnd,
+  data = {},
+  ...rest
 }) {
   const edgePath = getBezierPath({
     sourceX,
@@ -36,10 +38,11 @@ function ButtonEdge({
 
   const {
     handleCurrentEdgeClicked,
+    handleShowCenterCard,
     currentEdge,
-    ...rest
   } = useContext(ComponentContext);
 
+  const { centerCard } = data;
 
   const edgeSelected = useMemo(() => currentEdge === id ? null : id, [currentEdge, id])
 
@@ -55,9 +58,12 @@ function ButtonEdge({
       targetY,
       targetPosition,
     };
-
-    handleCurrentEdgeClicked(edgeSelected, coord);
-  }, [edgeSelected, handleCurrentEdgeClicked, sourcePosition, sourceX, sourceY, targetPosition, targetX, targetY]);
+    if (centerCard) {
+      handleShowCenterCard(true)
+    } else {
+      handleCurrentEdgeClicked(edgeSelected, coord);
+    }
+  }, [centerCard, edgeSelected, handleCurrentEdgeClicked, handleShowCenterCard, sourcePosition, sourceX, sourceY, targetPosition, targetX, targetY]);
 
   const handleOnClose = useCallback(() => {
     handleCurrentEdgeClicked(null, null);
@@ -95,7 +101,7 @@ function ButtonEdge({
       </foreignObject>
 
       {console.log(currentEdge === id)}
-      {currentEdge === id && (
+      {!centerCard && currentEdge === id && (
         < foreignObject
           width="160"
           height="150"

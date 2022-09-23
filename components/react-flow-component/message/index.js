@@ -1,15 +1,10 @@
 import React, { memo } from 'react'
 import style from './Message.module.css';
 
-function Message({ label, currentCoordenates }) {
-  console.log("currentCoordenates", currentCoordenates)
-  const {
-    sourceX,
-    sourceY
-  } = currentCoordenates;
+function Message({ label }) {
 
   return (
-    <div className={style["container-message"]} style={{ transform: `translate(${sourceX}px, ${sourceY}px)` }}>
+    <div className={style["container-message"]} >
       {label}
     </div>
   )

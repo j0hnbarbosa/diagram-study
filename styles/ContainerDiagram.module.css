@@ -16,3 +16,11 @@
 .edge-first>div>div>div>svg {
   z-index: 2 !important;
 }
+
+.containerMessageCard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}

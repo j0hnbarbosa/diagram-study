@@ -16,6 +16,7 @@ import ButtonEdge from './button-edge';
 import Message from './message';
 
 import { ComponentContext } from './context';
+import CardMessage from './card-message';
 
 const nodeTypes = {
   customNode: CustomNode,
@@ -91,11 +92,11 @@ const initialNodes = [
 ];
 
 const initialEdges = [
-  { id: 'e-1', zIndex: 1, type: 'buttonEdge', sourceHandle: 'right-node1-1', targetHandle: 'left-node2-2', source: '1', target: '2', animated: true },
+  { id: 'e-1', data: { centerCard: true }, zIndex: 1, type: 'buttonEdge', sourceHandle: 'right-node1-1', targetHandle: 'left-node2-2', source: '1', target: '2', animated: true },
   { id: 'e-2', zIndex: 1, type: 'buttonEdge', sourceHandle: 'right-node2-1', targetHandle: 'left-node3-1', source: '2', target: '3' },
-  { id: 'e-3', zIndex: 1, type: 'buttonEdge', sourceHandle: 'right-node2-1', targetHandle: 'left-node3-2', source: '2', target: '3-1', animated: true  },
+  { id: 'e-3', zIndex: 1, type: 'buttonEdge', sourceHandle: 'right-node2-1', targetHandle: 'left-node3-2', source: '2', target: '3-1', animated: true },
   { id: 'e-4', zIndex: 1, type: 'buttonEdge', sourceHandle: 'right-node2-1', targetHandle: 'left-node3-3', source: '2', target: '3-2' },
-  { id: 'e-5', zIndex: 1, type: 'buttonEdge', sourceHandle: 'right-node3-2', targetHandle: 'left-node4-1', source: '3-1', target: '4', animated: true  },
+  { id: 'e-5', zIndex: 1, type: 'buttonEdge', sourceHandle: 'right-node3-2', targetHandle: 'left-node4-1', source: '3-1', target: '4', animated: true },
 ];
 
 
@@ -103,7 +104,7 @@ function ReactFlowComponent() {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const [currentEdge, setCurrentEdge] = useState(null);
-  const [currentCoordenates, setCurrentCoordenates] = useState(null);
+  const [showCenterCard, setShowCenterCard] = useState(false);
 
   const onConnect = useCallback((connection) => {
     setEdges((eds) => addEdge(connection, eds));
@@ -112,11 +113,15 @@ function ReactFlowComponent() {
   const handleCurrentEdgeClicked = (value, coord) => {
     console.log("handleCurrentEdgeClicked", value)
     setCurrentEdge(value);
-    setCurrentCoordenates(coord);
   }
+
+  const handleShowCenterCard = (value) => {
+    setShowCenterCard(value);
+  };
 
   const valuesContext = {
     handleCurrentEdgeClicked,
+    handleShowCenterCard,
     currentEdge,
   };
 
@@ -135,10 +140,15 @@ function ReactFlowComponent() {
           fitView
           preventScrolling
         >
-          {/* {currentCoordenates && currentEdge && <Message
-            label="Hello"
-            currentCoordenates={currentCoordenates}
-          />} */}
+          {showCenterCard && (
+            <div className={style.containerMessageCard}>
+              <CardMessage
+                width={200}
+                height={204}
+                isCardCenter
+                onClose={() => handleShowCenterCard(false)} />
+            </div>
+          )}
 
           <MiniMap />
           {/* <Controls /> */}
