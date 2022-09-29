@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 import { Handle } from "react-flow-renderer";
 import Node, { contentStyle as style } from "./node";
-import stylenode from './NodeStyles.module.css';
+import stylenode from './NodeStyles.module.scss';
 
 const CustomNode = ({ data, selected }) => {
   if (!data) {

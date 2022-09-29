@@ -9,7 +9,7 @@ import * as React from 'react';
 import { CanvasWidget } from '@projectstorm/react-canvas-core';
 import { DemoCanvasWidget } from './helpers/DemoCanvasWidget';
 
-import style from '../../styles/ContainerDiagram.module.css'
+import style from '../../styles/ContainerDiagram.module.scss'
 
 
 export class AdvancedLinkModel extends DefaultLinkModel {

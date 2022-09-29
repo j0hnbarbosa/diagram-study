@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import stylenode from './NodeStyles.module.css';
+import stylenode from './NodeStyles.module.scss';
 
 export const contentStyle = {
   contentHeader: {

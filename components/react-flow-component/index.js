@@ -10,7 +10,7 @@ import ReactFlow, {
   Controls,
 } from 'react-flow-renderer';
 
-import style from '../../styles/ContainerDiagram.module.css'
+import style from '../../styles/ContainerDiagram.module.scss'
 import CustomNode from './custom-node';
 import ButtonEdge from './button-edge';
 import Message from './message';
@@ -110,7 +110,7 @@ function ReactFlowComponent() {
     setEdges((eds) => addEdge(connection, eds));
   }, [setEdges]);
 
-  const handleCurrentEdgeClicked = (value, coord) => {
+  const handleCurrentEdgeClicked = (value) => {
     console.log("handleCurrentEdgeClicked", value)
     setCurrentEdge(value);
   }
@@ -146,7 +146,9 @@ function ReactFlowComponent() {
                 width={200}
                 height={204}
                 isCardCenter
-                onClose={() => handleShowCenterCard(false)} />
+                onClose={() => handleShowCenterCard(false)}
+                isOpen={showCenterCard}
+              />
             </div>
           )}
 

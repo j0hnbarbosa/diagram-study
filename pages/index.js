@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import LinkToPages from '../components/LinkToPages'
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Home.module.scss'
 
 export default function Home() {
   return (

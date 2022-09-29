@@ -10,8 +10,14 @@
   max-width: 160px;
   background-color: #90CDF4;
   border: 1px solid #CBD5E0;
-  padding-top: 12px;
+  padding-top: 22px;
   z-index: 9999;
+}
+
+.paddingNormal {
+  &.container {
+    padding-top: 12px;
+  }
 }
 
 .textLink {
@@ -59,28 +65,28 @@
   padding-top: 0;
   overflow-y: auto;
   overflow-x: hidden;
-}
 
-.containerScroll::-webkit-scrollbar {
-  width: 6pt;
-  /* display: none; */
-}
+  &::-webkit-scrollbar {
+    width: 6pt;
+    /* display: none; */
+  }
 
-.containerScroll:hover::-webkit-scrollbar {
-  width: 3pt;
-}
+  &::-webkit-scrollbar {
+    width: 3pt;
+  }
 
-.containerScroll:hover::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
+  &:hover::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
 
-.containerScroll:hover::-webkit-scrollbar-thumb {
-  background: #CBD5E0;
-  transition: 1s;
-}
+  &:hover::-webkit-scrollbar-thumb {
+    background: #CBD5E0;
+    transition: 1s;
+  }
 
-.containerScroll:hover::-webkit-scrollbar-thumb:hover {
-  background: #A0AEC0;
+  &:hover::-webkit-scrollbar-thumb:hover {
+    background: #A0AEC0;
+  }
 }
 
 .close {
@@ -101,13 +107,12 @@
   font-weight: 500;
   color: #CBD5E0;
   transition: 0.3s;
-}
 
-.close:hover {
-  font-weight: 700;
-  background-color: rgba(100, 100, 100, 0.2);
+  &:hover {
+    font-weight: 700;
+    background-color: rgba(100, 100, 100, 0.2);
+  }
 }
-
 
 .cardClose {
   height: 1.3rem;

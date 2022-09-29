@@ -7,7 +7,8 @@ const ReactDiagramComponent = dynamic(
 )
 
 
-function ReactDiagramPage() {
+function ReactDiagramPage(props) {
+  console.log("ReactDiagramPage", props)
   return (
     <ReactDiagramComponent />
   )

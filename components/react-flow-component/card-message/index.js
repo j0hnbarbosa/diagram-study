@@ -1,19 +1,17 @@
-import style from './styles.module.css';
+import style from './styles.module.scss';
 
 function CardMessage({
-  linkpage = "",
-  linkDocumentation = "",
-  header = "",
   onClose,
   isCardCenter = false,
+  isOpen = false,
 }) {
   return (
-    <div className={`nowheel nodrag nopan ${style.container} ${isCardCenter ? style.cardCenter : ''}`}>
+    <div className={`nowheel nodrag nopan ${style.container} ${isCardCenter ? style.cardCenter : ''} ${!isOpen ? style.paddingNormal : ''}`}>
       <div onClick={onClose} className={`${style.close} ${isCardCenter ? style.cardClose : ''}`}>X</div>
 
       <div className={style.containerScroll}>
 
-        <div className={`${isCardCenter ? style.cardContent :style.content}`}>
+        <div className={`${isCardCenter ? style.cardContent : style.content}`}>
           <div>
             <span className={`${style.textLink} ${style.centerText} ${isCardCenter ? style.cardCenterLink : ''}`}>
               Example showing:

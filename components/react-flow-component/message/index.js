@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-import style from './Message.module.css';
+import style from './Message.module.scss';
 
 function Message({ label }) {
 

@@ -1,7 +1,7 @@
 import React, { memo, useCallback, useContext, useMemo } from 'react';
 import { getBezierPath, getEdgeCenter } from 'react-flow-renderer';
 
-import styles from './ButtonEdgeStyles.module.css';
+import styles from './ButtonEdgeStyles.module.scss';
 
 import CardMessage from '../card-message';
 import { ComponentContext } from '../context';
