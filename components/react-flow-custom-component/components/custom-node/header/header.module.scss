@@ -1,0 +1,27 @@
+.containerHeader {
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  background-color: #718096;
+  padding: 10px 0px;
+  height: 30px;
+  width: 200px;
+  color: #F7FAFC;
+  justify-content: space-between;
+}
+
+.containerLeft {
+  display: flex;
+  align-items: baseline;
+  padding-left: 6px;
+}
+
+.containerChevron {
+  display: flex;
+  cursor: pointer;
+  padding: 0 8px;
+}
+
+.title {
+  padding-left: 6px;
+}

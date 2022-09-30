@@ -2,6 +2,7 @@ import style from './styles.module.scss';
 
 function LinkToPages({
   linkpage = "",
+  linkPageCustom = "",
   linkDocumentation = "",
   header = "",
 }) {
@@ -16,6 +17,13 @@ function LinkToPages({
           Page Example
         </a>
       </span>
+
+      {linkPageCustom &&
+        (<span className={style.centerText}>
+          <a href={linkPageCustom} className={style.textLink}>
+            Page Example Custom
+          </a>
+        </span>)}
 
       <span className={style.centerText}>
         <a href={linkDocumentation} target='_blank' rel="noreferrer noopener" className={style.textLink}>
