@@ -21,15 +21,19 @@ function Body({
 
   return (
     <div className={`nodrag nopan nowheel ${styles.scroll} ${styles.container}`}>
-      {columns.map((element) => (
-        <Columns
-          key={element.id}
-          label={element.label}
-          id={element.id}
-          idLeft={element.idLeft}
-          idRight={element.idRight}
-        />
-      ))}
+      <div>
+
+        {columns.map((element) => (
+          <Columns
+            key={element.id}
+            label={element.label}
+            id={element.id}
+            idLeft={element.idLeft}
+            idRight={element.idRight}
+          />
+        ))}
+
+      </div>
     </div>
   )
 }

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import ReactFlow, {
   addEdge,
   Background,
@@ -8,6 +9,8 @@ import ReactFlow, {
 } from 'react-flow-renderer';
 
 import CustomNode from './components/custom-node';
+
+import { ComponentContext } from './context';
 
 import styles from '../../styles/ContainerDiagram.module.scss'
 
@@ -22,22 +25,34 @@ const nodeTypes = {
 
 function ReactFlowCustomComponent() {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
-  const [edges] = useNodesState(initialEdges);
+  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+  const [showNodeBody, setShowNodeBody] = useState(false);
+
+  const valuesContext = {
+    showNodeBody,
+    setShowNodeBody
+  };
 
   return (
-    <div className={styles.container}>
-      <ReactFlow
-        nodes={nodes}
-        edges={edges}
-        nodeTypes={nodeTypes}
-        // onNodesChange={onNodesChange}
-      >
+    <ComponentContext.Provider value={valuesContext}>
 
-        <Background />
-        <Controls />
-        <MiniMap />
-      </ReactFlow>
-    </div>
+      <div className={styles.container}>
+        <ReactFlow
+          nodes={nodes}
+          edges={edges}
+          nodeTypes={nodeTypes}
+          onNodesChange={onNodesChange}
+          onEdgesChange={onEdgesChange}
+
+        >
+
+          <Background />
+          <Controls />
+          <MiniMap />
+        </ReactFlow>
+      </div>
+
+    </ComponentContext.Provider>
   )
 }
 

@@ -1,31 +1,38 @@
-import { useState, memo } from 'react';
+import { useContext, memo } from 'react';
 import Header from './header';
 import Body from './body';
 
 import styles from './custom-node.module.scss';
+import { ComponentContext } from '../../context';
 
 function CustomNode(props) {
-  const [showBody, setShowBody] = useState(true);
-
   console.log('CustomNode props', props)
 
-  const { data = {} } = props;
+  const {
+    data = {},
+  } = props;
+
   const { label, columns } = data
 
+  const {
+    showNodeBody,
+    setShowNodeBody,
+  } = useContext(ComponentContext)
+
   const handleShowBody = () => {
-    setShowBody((prev) => !prev)
+    setShowNodeBody((prev) => !prev);
   }
 
   return (
     <div className={styles.containerNode}>
       <Header
         onShow={handleShowBody}
-        show={showBody}
+        show={showNodeBody}
         label={label}
       />
 
       <Body
-        show={showBody}
+        show={showNodeBody}
         columns={columns}
       />
     </div>
