@@ -269,7 +269,7 @@ export const initialNodes = [
     position: { x: 50, y: 450 },
   },
   {
-    id: generateId(),
+    id: 'id-target-3',
     type: 'customNode',
     data: {
       label: 'Node 3 C',
@@ -278,7 +278,7 @@ export const initialNodes = [
           {
             id: generateId(),
             hideHandleLeft: true,
-            idLeft: 'left-node1-1',
+            idLeft: 'target-left-node3-3',
             idRight: 'right-node1-1',
             type: "data",
             label: "Origem (DAX)"
@@ -669,11 +669,11 @@ export const initialEdges = [
     data: {
       centerCard: true
     },
-    type: 'buttonEdge',
+    // type: 'buttonEdge',
     sourceHandle: 'source-right-node1-1',
-    targetHandle: 'target-left-node2-2',
+    targetHandle: 'target-left-node3-3',
     source: 'id-source-1',
-    target: 'id-target-2',
+    target: 'id-target-3',
     animated: true
   },
 ]

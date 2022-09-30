@@ -26,6 +26,8 @@ function Body({
           key={element.id}
           label={element.label}
           id={element.id}
+          idLeft={element.idLeft}
+          idRight={element.idRight}
         />
       ))}
     </div>

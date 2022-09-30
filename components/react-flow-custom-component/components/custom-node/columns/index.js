@@ -8,6 +8,8 @@ function Columns({
   hideHandleLeft = true,
   hideHandleRight = true,
   id,
+  idLeft,
+  idRight,
 }) {
   return (
     <div className={styles.container} >
@@ -19,10 +21,10 @@ function Columns({
 
       {hideHandleLeft && (
         <Handle
-          id={`${id}-left`}
+          // id={`${id}-left`}
           type="target"
           position="left"
-          // id={output.idLeft}
+          id={idLeft}
           className={`${styles.handle} ${styles.left}`}
           isConnectable={false}
         />
@@ -30,10 +32,10 @@ function Columns({
 
       {hideHandleRight && (
         <Handle
-          id={`${id}-right`}
+          // id={`${id}-right`}
           type="source"
           position="right"
-          // id={output.idRight}
+          id={idRight}
           className={`${styles.handle} ${styles.right}`}
           isConnectable={false}
         />

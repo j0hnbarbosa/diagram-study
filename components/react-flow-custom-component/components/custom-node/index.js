@@ -5,7 +5,7 @@ import Body from './body';
 import styles from './custom-node.module.scss';
 
 function CustomNode(props) {
-  const [showBody, setShowBody] = useState(false);
+  const [showBody, setShowBody] = useState(true);
 
   console.log('CustomNode props', props)
 
