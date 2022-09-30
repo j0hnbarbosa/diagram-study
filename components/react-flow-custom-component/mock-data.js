@@ -135,7 +135,7 @@ export const initialNodes = [
           },
         ]
     },
-    position: { x: 0, y: 0 },
+    position: { x: 50, y: 50 },
   },
   {
     id: 'id-target-2',
@@ -266,7 +266,7 @@ export const initialNodes = [
           },
         ]
     },
-    position: { x: 0, y: 400 },
+    position: { x: 50, y: 450 },
   },
   {
     id: generateId(),
@@ -397,7 +397,7 @@ export const initialNodes = [
           },
         ]
     },
-    position: { x: 300, y: 200 },
+    position: { x: 350, y: 250 },
   },
   {
     id: generateId(),
@@ -528,7 +528,7 @@ export const initialNodes = [
           },
         ]
     },
-    position: { x: 600, y: 0 },
+    position: { x: 650, y: 50 },
   },
   {
     id: generateId(),
@@ -659,7 +659,7 @@ export const initialNodes = [
           },
         ]
     },
-    position: { x: 600, y: 400 },
+    position: { x: 650, y: 450 },
   }
 ];
 
