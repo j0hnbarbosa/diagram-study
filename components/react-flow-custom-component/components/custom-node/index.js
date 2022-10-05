@@ -32,7 +32,8 @@ function CustomNode(props) {
 
 
       if (!entrie.isIntersecting) {
-        entrie.target.style.backgroundColor = "red"
+        // entrie.target.style.backgroundColor = "red"
+
         if (entrie.target.attributes.idleft.value === "target-left-node3-3") {
           console.log(entrie.target.attributes.idleft.value)
           handleHideEdge('target-left-node3-3', true, 'left');
@@ -47,7 +48,7 @@ function CustomNode(props) {
           handleHideEdge('source-right-node1-12', true, 'right');
         }
       } else {
-        entrie.target.style.backgroundColor = "lightgreen"
+        // entrie.target.style.backgroundColor = "lightgreen"
 
         if (entrie.target.attributes.idleft.value === "target-left-node3-3") {
           console.log(entrie.target.attributes.idleft.value)
