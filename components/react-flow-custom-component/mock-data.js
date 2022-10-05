@@ -129,7 +129,7 @@ export const initialNodes = [
             id: generateId(),
             hideHandleLeft: true,
             idLeft: 'left-node1-1',
-            idRight: 'right-node1-1',
+            idRight: 'source-right-node1-12',
             type: "data",
             label: "Example (DAX)"
           },
@@ -390,7 +390,7 @@ export const initialNodes = [
           {
             id: generateId(),
             hideHandleLeft: true,
-            idLeft: 'left-node1-1',
+            idLeft: 'target-left-node3-12',
             idRight: 'right-node1-1',
             type: "data",
             label: "Example (DAX)"
@@ -672,6 +672,18 @@ export const initialEdges = [
     // type: 'buttonEdge',
     sourceHandle: 'source-right-node1-1',
     targetHandle: 'target-left-node3-3',
+    source: 'id-source-1',
+    target: 'id-target-3',
+    animated: true
+  },
+  {
+    id: 'test-edge-id-2',
+    data: {
+      centerCard: true
+    },
+    // type: 'buttonEdge',
+    sourceHandle: 'source-right-node1-12',
+    targetHandle: 'target-left-node3-12',
     source: 'id-source-1',
     target: 'id-target-3',
     animated: true

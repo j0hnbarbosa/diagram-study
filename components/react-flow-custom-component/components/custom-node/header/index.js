@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
+
 import {
   BsChevronDown,
   BsChevronUp,
   BsFillGrid3X3GapFill
 } from 'react-icons/bs';
+import { ComponentContext } from '../../../context';
 
 import styles from './header.module.scss';
 

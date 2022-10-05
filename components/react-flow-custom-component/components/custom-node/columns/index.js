@@ -2,6 +2,7 @@ import { BsGrid3X3Gap } from 'react-icons/bs';
 import { Handle } from "react-flow-renderer";
 
 import styles from './columns.module.scss'
+import { useEffect, useRef } from 'react';
 
 function Columns({
   label = "",
@@ -10,9 +11,19 @@ function Columns({
   id,
   idLeft,
   idRight,
+  onGetRefColumn,
 }) {
+
+  const columnRef = useRef();
+
+  useEffect(() => {
+    if (columnRef && columnRef.current) {
+      onGetRefColumn(columnRef);
+    }
+  }, [onGetRefColumn]);
+
   return (
-    <div className={styles.container} >
+    <div className={styles.container} ref={columnRef} idleft={idLeft} idright={idRight}>
       <BsGrid3X3Gap size={12} />
 
       <div className={styles.label}>

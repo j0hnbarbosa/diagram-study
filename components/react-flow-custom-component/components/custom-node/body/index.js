@@ -1,23 +1,23 @@
-import PropTypes from 'prop-types';
+import { useEffect, useRef } from 'react';
 import styles from './body.module.scss';
 import Columns from '../columns';
 import _ from 'lodash';
 
-const initialColumns = _.times(25, (indice) => (
-  <Columns
-    key={indice}
-    text={`Columns ${indice}`}
-  />
-));
-
 function Body({
   show = false,
   columns,
+  intersectionObserver,
 }) {
 
-  if (!show || !columns || columns.length === 0) {
+  if (!show || !columns || columns.length === 0 || !intersectionObserver) {
     return <></>
   }
+
+  const handleGetRefColumn = (ref) => {
+    intersectionObserver.observe(ref.current);
+  }
+
+  // console.log(listObserve);
 
   return (
     <div className={`nodrag nopan nowheel ${styles.scroll} ${styles.container}`}>
@@ -25,6 +25,7 @@ function Body({
 
         {columns.map((element) => (
           <Columns
+            onGetRefColumn={handleGetRefColumn}
             key={element.id}
             label={element.label}
             id={element.id}
