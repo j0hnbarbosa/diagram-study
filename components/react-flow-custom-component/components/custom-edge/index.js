@@ -1,5 +1,8 @@
 import React from 'react';
 import { getBezierPath } from 'reactflow';
+import { IoMdCube } from 'react-icons/io'
+
+const foreignObjectSize = 20;
 
 function CustomEdge({
   id,
@@ -13,7 +16,7 @@ function CustomEdge({
   data,
   markerEnd,
 }) {
-  const [edgePath] = getBezierPath({
+  const [edgePath, labelX, labelY] = getBezierPath({
     sourceX,
     sourceY,
     sourcePosition,
@@ -31,6 +34,21 @@ function CustomEdge({
         d={edgePath}
         markerEnd={markerEnd}
       />
+
+      {/* < foreignObject
+        width="50"
+        height="50"
+        x={labelX - foreignObjectSize / 2}
+        y={labelY - foreignObjectSize  / 2}
+        // className={styles["edgebutton-foreignobject"]}
+        requiredExtensions="http://www.w3.org/1999/xhtml"
+        style={{ zIndex: '999' }}
+      >
+
+        <IoMdCube size={20} />
+
+      </foreignObject> */}
+
       <text>
         <textPath
           href={`#${id}`}
@@ -41,6 +59,7 @@ function CustomEdge({
           {data.text}
         </textPath>
       </text>
+
     </>
   );
 }

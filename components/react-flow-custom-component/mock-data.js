@@ -694,5 +694,6 @@ export const initialEdges = [
     source: 'id-source-1',
     target: 'id-target-3',
     animated: true,
+    hidden: true,
   },
 ]
