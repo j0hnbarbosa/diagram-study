@@ -1,5 +1,5 @@
 import { BsGrid3X3Gap } from 'react-icons/bs';
-import { Handle } from "react-flow-renderer";
+import { Handle } from 'reactflow';
 
 import styles from './columns.module.scss'
 import { useEffect, useRef } from 'react';

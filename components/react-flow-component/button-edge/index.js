@@ -1,12 +1,12 @@
 import React, { memo, useCallback, useContext, useMemo } from 'react';
-import { getBezierPath, getEdgeCenter } from 'react-flow-renderer';
+import { getBezierPath, getEdgeCenter } from 'reactflow';
 
 import styles from './ButtonEdgeStyles.module.scss';
 
 import CardMessage from '../card-message';
 import { ComponentContext } from '../context';
 
-const foreignObjectSize = 40;
+const foreignObjectSize = 25;
 
 function ButtonEdge({
   id,
@@ -21,7 +21,7 @@ function ButtonEdge({
   data = {},
   ...rest
 }) {
-  const edgePath = getBezierPath({
+  const [edgePath, labelX, labelY] = getBezierPath({
     sourceX,
     sourceY,
     sourcePosition,
@@ -29,12 +29,8 @@ function ButtonEdge({
     targetY,
     targetPosition,
   });
-  const [edgeCenterX, edgeCenterY] = getEdgeCenter({
-    sourceX,
-    sourceY,
-    targetX,
-    targetY,
-  });
+
+  console.log(edgePath);
 
   const {
     handleCurrentEdgeClicked,
@@ -85,9 +81,9 @@ function ButtonEdge({
       <foreignObject
         width={foreignObjectSize}
         height={foreignObjectSize}
-        x={edgeCenterX - foreignObjectSize / 2}
-        y={edgeCenterY - foreignObjectSize / 2}
-        className={styles["edgebutton-foreignobject"]}
+        x={labelX - foreignObjectSize / 2}
+        y={labelY - foreignObjectSize / 2}
+        className="edgebutton-foreignobject"
         requiredExtensions="http://www.w3.org/1999/xhtml"
       >
         <div className={styles["container-button"]}>
@@ -100,14 +96,13 @@ function ButtonEdge({
         </div>
       </foreignObject>
 
-      {console.log(currentEdge === id)}
       {!centerCard && currentEdge === id && (
         < foreignObject
           width="160"
           height="150"
-          x={edgeCenterX - foreignObjectSize / 2}
-          y={edgeCenterY - foreignObjectSize / 2}
-          // className={styles["edgebutton-foreignobject"]}
+          x={labelX - foreignObjectSize / 2}
+          y={labelY - foreignObjectSize / 2}
+          className={styles["edgebutton-foreignobject"]}
           requiredExtensions="http://www.w3.org/1999/xhtml"
           style={{ zIndex: '999' }}
         >

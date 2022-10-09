@@ -1,3 +1,5 @@
+// default styling
+import 'reactflow/dist/style.css';
 import { useCallback, useState } from 'react';
 
 
@@ -8,7 +10,7 @@ import ReactFlow, {
   useEdgesState,
   MiniMap,
   Controls,
-} from 'react-flow-renderer';
+} from 'reactflow';
 
 import style from '../../styles/ContainerDiagram.module.scss'
 import CustomNode from './custom-node';

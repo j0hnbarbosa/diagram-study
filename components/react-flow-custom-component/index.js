@@ -1,3 +1,5 @@
+// default styling
+import 'reactflow/dist/style.css';
 import { useCallback, useState, useEffect } from 'react';
 import ReactFlow, {
   addEdge,
@@ -6,9 +8,10 @@ import ReactFlow, {
   useEdgesState,
   MiniMap,
   Controls,
-} from 'react-flow-renderer';
+} from 'reactflow';
 
 import CustomNode from './components/custom-node';
+import CustomEdge from './components/custom-edge';
 
 import { ComponentContext } from './context';
 
@@ -22,6 +25,10 @@ import {
 const nodeTypes = {
   customNode: CustomNode,
 }
+
+const edgeTypes = {
+  custom: CustomEdge,
+};
 
 function ReactFlowCustomComponent() {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
@@ -66,6 +73,7 @@ function ReactFlowCustomComponent() {
           nodeTypes={nodeTypes}
           onNodesChange={onNodesChange}
         // onEdgesChange={onEdgesChange}
+          edgeTypes={edgeTypes}
         >
 
           <Background />

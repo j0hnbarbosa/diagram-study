@@ -1,3 +1,4 @@
+import { MarkerType } from 'reactflow';
 let nextId = 0;
 
 const generateId = () => {
@@ -667,14 +668,20 @@ export const initialEdges = [
   {
     id: 'test-edge-id-1',
     data: {
-      centerCard: true
+      centerCard: true,
+      text: 'custom edge'
+    },
+    type: 'custom',
+    markerEnd: {
+      type: MarkerType.ArrowClosed,
     },
     // type: 'buttonEdge',
     sourceHandle: 'source-right-node1-1',
     targetHandle: 'target-left-node3-3',
     source: 'id-source-1',
     target: 'id-target-3',
-    animated: true
+    animated: true,
+
   },
   {
     id: 'test-edge-id-2',
@@ -686,6 +693,6 @@ export const initialEdges = [
     targetHandle: 'target-left-node3-12',
     source: 'id-source-1',
     target: 'id-target-3',
-    animated: true
+    animated: true,
   },
 ]

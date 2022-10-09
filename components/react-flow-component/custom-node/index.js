@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { Handle } from "react-flow-renderer";
+import { Handle } from 'reactflow';
 import Node, { contentStyle as style } from "./node";
 import stylenode from './NodeStyles.module.scss';
 
