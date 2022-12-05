@@ -25,6 +25,7 @@ export default function Home() {
               header='React Flow'
               linkpage='react-flow-page'
               linkPageCustom='react-flow-custom-page'
+              linkPagePosition='react-flow-positioning-nodes-page'
               linkDocumentation='https://reactflow.dev/docs/introduction/'
             />
           </li>

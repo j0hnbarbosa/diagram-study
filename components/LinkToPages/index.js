@@ -3,6 +3,7 @@ import style from './styles.module.scss';
 function LinkToPages({
   linkpage = "",
   linkPageCustom = "",
+  linkPagePosition = "",
   linkDocumentation = "",
   header = "",
 }) {
@@ -22,6 +23,13 @@ function LinkToPages({
         (<span className={style.centerText}>
           <a href={linkPageCustom} className={style.textLink}>
             Page Example Custom
+          </a>
+        </span>)}
+      
+      {linkPagePosition &&
+        (<span className={style.centerText}>
+          <a href={linkPagePosition} className={style.textLink}>
+            Page Example Postion Nodes
           </a>
         </span>)}
 
