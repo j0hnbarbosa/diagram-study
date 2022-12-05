@@ -1,5 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-// default styling
 import 'reactflow/dist/style.css';
 import { useCallback, useState, useEffect } from 'react';
 import ReactFlow, {
@@ -19,7 +17,7 @@ import { ComponentContext } from './context';
 import styles from '../../styles/ContainerDiagram.module.scss'
 
 import {
-  usePositionNodes
+  initPositionNodes
 } from './mock-data';
 
 const nodeTypes = {
@@ -32,7 +30,7 @@ const edgeTypes = {
 
 function ReactFlowPositioningNodesComponent() {
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
-  // const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const [showNodeBody, setShowNodeBody] = useState(true);
 
 
@@ -62,14 +60,14 @@ function ReactFlowPositioningNodesComponent() {
     handleHideEdge,
   };
 
-  const nodesFormated = usePositionNodes();
-  console.log('usePositionNodes', nodesFormated);
 
   useEffect(() => {
-    const nodesFormated = usePositionNodes();
-    console.log('usePositionNodes', nodesFormated);
-    setNodes(nodesFormated)
-  }, [])
+    const { newNodesFormated, newEdgesFormated } = initPositionNodes();
+    console.log('initPositionNodes', newNodesFormated);
+
+    setNodes(newNodesFormated);
+    setEdges(newEdgesFormated)
+  }, [setNodes])
 
   return (
     <ComponentContext.Provider value={valuesContext}>
@@ -79,7 +77,7 @@ function ReactFlowPositioningNodesComponent() {
           nodes={nodes}
           nodeTypes={nodeTypes}
           onNodesChange={onNodesChange}
-          // edges={edges}
+          edges={edges}
           // onEdgesChange={onEdgesChange}
           // edgeTypes={edgeTypes}
           minZoom={0.2}
@@ -87,7 +85,7 @@ function ReactFlowPositioningNodesComponent() {
 
           <Background />
           <Controls />
-          <MiniMap />
+          {/* <MiniMap /> */}
         </ReactFlow>
       </div>
 

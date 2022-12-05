@@ -5,6 +5,7 @@ import {
   BsChevronUp,
   BsFillGrid3X3GapFill
 } from 'react-icons/bs';
+import { Handle } from 'reactflow';
 import { ComponentContext } from '../../../context';
 
 import styles from './header.module.scss';
@@ -13,6 +14,10 @@ function Header({
   onShow = () => { },
   show = false,
   label = "",
+  hideHandleLeft = true,
+  hideHandleRight = true,
+  idRight,
+  idLeft,
 }) {
 
   return (
@@ -23,6 +28,30 @@ function Header({
           {label}
         </div>
       </div>
+
+      {hideHandleRight && (
+        <Handle
+          // id={`${id}-right`}
+          type="source"
+          position="right"
+          id={idRight}
+          className={`${styles.handle} `}
+          isConnectable={false}
+        />
+      )}
+
+      {hideHandleLeft && (
+        <Handle
+          // id={`${id}-left`}
+          type="target"
+          position="left"
+          id={idLeft}
+          className={`${styles.handle} `}
+          isConnectable={false}
+        />
+      )}
+
+
 
       <div
         onClick={onShow}

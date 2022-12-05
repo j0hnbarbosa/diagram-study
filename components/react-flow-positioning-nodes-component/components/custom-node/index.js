@@ -95,6 +95,8 @@ function CustomNode(props) {
         show={showNodeBody}
         label={label}
         id={id}
+        idLeft={data.idLeft}
+        idRight={data.idRight}
       />
 
       <Body
