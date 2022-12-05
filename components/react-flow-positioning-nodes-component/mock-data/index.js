@@ -20,9 +20,10 @@ export const initPositionNodes = () => {
   const nodesFormated = [];
   const nodesEdges = [];
 
-  const DISTANCE_X = 300;
+  const DISTANCE_X = 450;
   const DISTANCE_Y = 200;
 
+  const nodesVisited = {}
 
   let nextLeftDistanceX = DISTANCE_X * -1;
   let nextRightDistanceX = DISTANCE_X;
@@ -55,6 +56,9 @@ export const initPositionNodes = () => {
         id: `edge-${element.id}`,
         markerEnd: {
           type: MarkerType.ArrowClosed,
+          width: 30,
+          height: 30,
+          color: '#0077B6',
         },
         animated: true,
 
@@ -93,7 +97,6 @@ export const initPositionNodes = () => {
    * @param {string} side 
    */
   const recursionData = (level, valuesNode, side, parentId) => {
-
     if (side === SIDE.LEFT && !distanceLeftLevel_X[level]) {
       distanceLeftLevel_X[level] = nextLeftDistanceX;
       nextLeftDistanceX += DISTANCE_X * -1;
@@ -115,7 +118,11 @@ export const initPositionNodes = () => {
 
       const values = { ...element, parentId }
 
-      formatNode(values, side, posX,);
+      if (!nodesVisited[element.id]) {
+        nodesVisited[element.id] = { x: posX };
+      }
+
+      formatNode(values, side, posX);
       recursionData(
         level + 1,
         side === SIDE.LEFT ? element.left : element.right,
@@ -127,6 +134,7 @@ export const initPositionNodes = () => {
 
   nodesList.root = { id: mockValues.id, level: 0, label: mockValues.label };
   formatNode(mockValues, SIDE.LEFT, 0, null)
+  nodesVisited[nodesList.root.id] = { x: _.head(nodesFormated).position.x }
 
 
   recursionData(
@@ -173,8 +181,6 @@ export const initPositionNodes = () => {
           posY += DISTANCE_Y;
         }
 
-        // listsPosY[center] = { y: 0 };
-
         console.log('listsPosY', listsPosY);
 
         _.forEach(elements, (element, index) => {
@@ -219,6 +225,7 @@ export const initPositionNodes = () => {
   const newEdgesFormated = formatEdge();
 
   console.log('newEdgesFormated', newEdgesFormated)
+  console.log('nodesVisited', nodesVisited)
 
   return { newNodesFormated, newEdgesFormated };
 }

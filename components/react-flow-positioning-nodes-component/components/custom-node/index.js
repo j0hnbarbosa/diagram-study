@@ -35,14 +35,14 @@ function CustomNode(props) {
         // entrie.target.style.backgroundColor = "red"
 
         if (entrie.target.attributes.idleft.value === "target-left-node3-3") {
-          console.log(entrie.target.attributes.idleft.value)
+          // console.log(entrie.target.attributes.idleft.value)
           handleHideEdge('target-left-node3-3', true, 'left');
         } else if (entrie.target.attributes.idright.value === 'source-right-node1-1') {
           handleHideEdge('source-right-node1-1', true, 'right');
         }
 
         if (entrie.target.attributes.idleft.value === "target-left-node3-12") {
-          console.log(entrie.target.attributes.idleft.value)
+          // console.log(entrie.target.attributes.idleft.value)
           handleHideEdge('target-left-node3-12', true, 'left');
         } else if (entrie.target.attributes.idright.value === 'source-right-node1-12') {
           handleHideEdge('source-right-node1-12', true, 'right');
@@ -51,14 +51,14 @@ function CustomNode(props) {
         // entrie.target.style.backgroundColor = "lightgreen"
 
         if (entrie.target.attributes.idleft.value === "target-left-node3-3") {
-          console.log(entrie.target.attributes.idleft.value)
+          // console.log(entrie.target.attributes.idleft.value)
           handleHideEdge('target-left-node3-3', false, 'left');
         } else if (entrie.target.attributes.idright.value === 'source-right-node1-1') {
           handleHideEdge('source-right-node1-1', false, 'right');
         }
 
         if (entrie.target.attributes.idleft.value === "target-left-node3-12") {
-          console.log(entrie.target.attributes.idleft.value)
+          // console.log(entrie.target.attributes.idleft.value)
           handleHideEdge('target-left-node3-12', false, 'left');
         } else if (entrie.target.attributes.idright.value === 'source-right-node1-12') {
           handleHideEdge('source-right-node1-12', false, 'right');
@@ -69,9 +69,8 @@ function CustomNode(props) {
   }, [handleHideEdge]);
 
   const handleConfigIntersectionObserver = useCallback((options) => {
-    console.log("ID:", id)
     intersectionObserver.current = new IntersectionObserver(handleIntersection, options);
-  }, [handleIntersection, id])
+  }, [handleIntersection])
 
   const containerRef = useRef(null);
 
