@@ -3,6 +3,7 @@ import { id } from 'paths-js/ops';
 import { MarkerType } from 'reactflow';
 
 import { mockValues } from './mock-nodes';
+import { mockColumns } from './mock-column';
 
 let nextId = 0;
 
@@ -218,6 +219,34 @@ export const initPositionNodes = () => {
     })
   })
 
+  const joinNodesColumns = () => {
+    const groupedColumnsByNode = _.groupBy(mockColumns, (element) => element.nodeId);
+    console.log('groupedColumnsByNode', groupedColumnsByNode);
+
+    const formatColumn = (values) => _.map(values, (element) => ({
+      label: element.label,
+      idRight: `right-${element.columnId}`,
+      idLeft: `left-${element.columnId}`,
+      showHandleLeft: true,
+      showHandleRight: true,
+    }))
+
+    const newValues = _.map(newNodesFormated, (element) => {
+      if (groupedColumnsByNode[element.id]) {
+        return ({
+          ...element,
+          data: {
+            ...element.data,
+            columns: formatColumn(_.head(groupedColumnsByNode[element.id]).columns)
+          }
+        })
+      }
+
+      return element;
+    })
+    return newValues;
+  }
+
   console.log('newNodesFormated', newNodesFormated);
 
   console.log('mockValues', mockValues)
@@ -227,5 +256,57 @@ export const initPositionNodes = () => {
   console.log('newEdgesFormated', newEdgesFormated)
   console.log('nodesVisited', nodesVisited)
 
-  return { newNodesFormated, newEdgesFormated };
+  const nodesAndColumns = joinNodesColumns();
+  console.log('nodesAndColumns', nodesAndColumns);
+
+
+  const defaultValues = () => ({
+    id: `edge-${generateId()}`,
+    markerEnd: {
+      type: MarkerType.ArrowClosed,
+      width: 30,
+      height: 30,
+      color: '#0077B6',
+    },
+    animated: true,
+  })
+
+  newEdgesFormated.push({
+    ...defaultValues(),
+    sourceHandle: 'right-column-id-30',
+    targetHandle: 'left-column-id-0',
+    source: 'id-2',
+    target: 'id-1',
+  })
+
+  const tablesGrouped = _.groupBy(mockColumns, (element) => element.nodeId);
+
+  console.log('tablesGrouped', tablesGrouped);
+
+
+  const newEdgesColumns = [];
+
+  const generateEdgesForColumns = () => {
+  _.forEach(newNodesFormated, (element) => {
+    if (tablesGrouped[element.id]) {
+      _.forEach(_.head(tablesGrouped[element.id]).columns, (elementColumn) => {
+        if (elementColumn.inputs.length > 0) {
+          newEdgesColumns.push({
+            ...defaultValues(),
+            sourceHandle: `right-${elementColumn.columnId}`,
+            targetHandle: `left-${_.head(elementColumn.inputs).targetColumnId}`,
+            source: element.id,
+            target: 'id-1',
+          })
+        }
+      })
+    }
+  })
+}
+
+generateEdgesForColumns();
+
+  console.log('newEdgesColumns', newEdgesColumns)
+
+  return { newNodesFormated: nodesAndColumns, newEdgesFormated };
 }

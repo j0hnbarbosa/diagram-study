@@ -14,8 +14,8 @@ function Header({
   onShow = () => { },
   show = false,
   label = "",
-  hideHandleLeft = true,
-  hideHandleRight = true,
+  showHandleLeft = true,
+  showHandleRight = true,
   idRight,
   idLeft,
 }) {
@@ -29,7 +29,7 @@ function Header({
         </div>
       </div>
 
-      {hideHandleRight && (
+      {showHandleRight && (
         <Handle
           // id={`${id}-right`}
           type="source"
@@ -40,7 +40,7 @@ function Header({
         />
       )}
 
-      {hideHandleLeft && (
+      {showHandleLeft && (
         <Handle
           // id={`${id}-left`}
           type="target"

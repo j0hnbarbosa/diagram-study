@@ -9,7 +9,7 @@ function Body({
   intersectionObserver,
 }) {
 
-  if (!show || !columns || columns.length === 0 || !intersectionObserver) {
+  if (!show || !columns || columns.length === 0) {
     return <></>
   }
 
@@ -27,10 +27,7 @@ function Body({
           <Columns
             onGetRefColumn={handleGetRefColumn}
             key={element.id}
-            label={element.label}
-            id={element.id}
-            idLeft={element.idLeft}
-            idRight={element.idRight}
+            column={element}
           />
         ))}
 

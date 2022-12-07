@@ -5,21 +5,25 @@ import styles from './columns.module.scss'
 import { useEffect, useRef } from 'react';
 
 function Columns({
-  label = "",
-  hideHandleLeft = true,
-  hideHandleRight = true,
-  id,
-  idLeft,
-  idRight,
   onGetRefColumn,
+  column,
 }) {
 
   const columnRef = useRef();
 
+  const {
+    label,
+    id,
+    idLeft,
+    idRight,
+    showHandleLeft = true,
+    showHandleRight = true,
+  } = column;
+
   useEffect(() => {
-    if (columnRef && columnRef.current) {
-      onGetRefColumn(columnRef);
-    }
+    // if (columnRef && columnRef.current) {
+    //   onGetRefColumn(columnRef);
+    // }
   }, [onGetRefColumn]);
 
   return (
@@ -30,24 +34,24 @@ function Columns({
         {label}
       </div>
 
-      {hideHandleLeft && (
+      {showHandleLeft && (
         <Handle
           // id={`${id}-left`}
           type="target"
           position="left"
           id={idLeft}
-          className={`${styles.handle} ${styles.left}`}
+          className={`${styles.handle}`}
           isConnectable={false}
         />
       )}
 
-      {hideHandleRight && (
+      {showHandleRight && (
         <Handle
           // id={`${id}-right`}
           type="source"
           position="right"
           id={idRight}
-          className={`${styles.handle} ${styles.right}`}
+          className={`${styles.handle}`}
           isConnectable={false}
         />
       )}
